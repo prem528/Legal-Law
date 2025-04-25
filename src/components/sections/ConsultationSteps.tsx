@@ -30,23 +30,25 @@ const steps = [
 
 const ConsultationSteps: React.FC = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 px-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Steps To Get Legal Consultation</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-5xl font-semibold text-blue-800 mb-4">Steps To Get Legal Consultation</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Follow these simple steps to get professional legal advice from our experts.
           </p>
         </div>
         
+        <div className='relative'>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, index) => (
-            <div key={index} className={`p-6 rounded-lg ${step.color} border border-t-4 border-t-brand-orange shadow-sm`}>
+            <div key={index} className={`p-6 rounded-lg ${step.color} shadow-sm`}>
               <div className="mb-4">{step.icon}</div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">{step.title}</h3>
               <p className="text-gray-600">{step.description}</p>
             </div>
           ))}
+        </div>
         </div>
       </div>
     </section>

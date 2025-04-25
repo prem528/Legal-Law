@@ -47,8 +47,8 @@ const FAQ: React.FC = () => {
         <section className="py-16 bg-white" id="faq">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Launched FAQ</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
+                    <h2 className="text-5xl font-semibold text-blue-800 mb-4">Launched FAQ</h2>
+                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
                         Find answers to common questions about our legal services.
                     </p>
                 </div>
@@ -57,10 +57,10 @@ const FAQ: React.FC = () => {
                     <Accordion type="single" collapsible className="space-y-4">
                         {faqData.map((item, index) => (
                             <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-md bg-gray-50">
-                                <AccordionTrigger className="px-6 py-4 font-semibold hover:text-brand-orange">
+                                <AccordionTrigger className="px-6 py-4 text-xl font-normal hover:text-orange-500">
                                     {item.question}
                                 </AccordionTrigger>
-                                <AccordionContent className="px-6 pb-4 text-gray-600">
+                                <AccordionContent className="px-6 pb-4 text-lg text-gray-600">
                                     {item.answer}
                                 </AccordionContent>
                             </AccordionItem>

@@ -17,13 +17,16 @@ import Footer from './components/layout/Footer';
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <div className='py-10'>
+        <Navbar />
+      </div>
       <HeroSection />
       <Features />
       <ConsultationSteps />
       <QuickContact />
-      <ServiceFeatures />
+     
       <Services />
+       <ServiceFeatures />
       <VirtualMembership />
       <Testimonials />
       <FAQ />

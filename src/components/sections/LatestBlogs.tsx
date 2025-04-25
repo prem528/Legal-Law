@@ -10,7 +10,7 @@ const blogsData = [
     date: "June 15, 2023"
   },
   {
-    image: "https://images.unsplash.com/photo-1602069159886-bbaf743dc978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://t3.ftcdn.net/jpg/04/42/51/24/360_F_442512403_6pSiDAirKYmPIFTjiCUpMcmWrrEnhgjI.jpg",
     title: "A Guide to Employee Rights in the Remote Work Era",
     author: "Sarah Johnson",
     date: "May 28, 2023"
@@ -25,11 +25,11 @@ const blogsData = [
 
 const LatestBlogs: React.FC = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 px-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Latest Blogs</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-5xl font-semibold text-blue-800 mb-4">Latest Blogs</h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Stay updated with our informative articles on various legal topics.
           </p>
         </div>
