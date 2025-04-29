@@ -1,23 +1,23 @@
 
-import { LucideIcon } from "lucide-react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 
 interface ServiceCardProps {
-  icon: LucideIcon;
+  image: string;
+  
   title: string;
   description: string;
-  color?: string;
+   
 }
 
-export function ServiceCard({ icon: Icon, title, description, color = "text-blue-500" }: ServiceCardProps) {
+export function ServiceCard({ image, title, description = "text-blue-500" }: ServiceCardProps) {
   return (
     <Card className="flex flex-col h-full bg-gray-50 border-none shadow-sm overflow-hidden">
-      <div className="p-6 flex-1 flex flex-col">
-        <div className="mb-6">
+      <div className="p-2 flex-1 flex flex-col">
+        <div className="mb-4">
           <div className="flex justify-center">
             <img 
-              src={`https://placehold.co/200x150/e0e0e0/white?text=${title.split(' ')[0]}`} 
+              src={image} 
               alt={title} 
               className="object-contain h-32 rounded" 
             />

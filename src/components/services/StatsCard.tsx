@@ -12,7 +12,7 @@ interface StatsCardProps {
 export function StatsCard({ value, description, className }: StatsCardProps) {
   return (
     <Card className={cn(
-      "flex flex-col items-center justify-center p-4 text-center", 
+      "flex flex-col items-center justify-center p-2 text-center", 
       className
     )}>
       <p className="text-xl font-bold">{value}</p>

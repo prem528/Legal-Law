@@ -4,7 +4,7 @@ export function TestimonialCard() {
   return (
     <Card className="bg-white border shadow-sm p-6">
       <div className="flex justify-between items-start mb-4">
-        <div className="text-2xl">"</div>
+         
         <div className="flex items-center">
           <span className="text-sm font-medium mr-2">Trustpilot</span>
           <div className="flex items-center">
