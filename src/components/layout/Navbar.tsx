@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '../ui/button';
+import { Link } from 'react-router-dom';
  
 
 
@@ -18,12 +19,8 @@ const Navbar: React.FC = () => {
                     </div>
 
                     <nav className="hidden md:flex space-x-8">
-                        <a href="/" className="text-gray-700 hover:text-brand-orange transition-colors">
-                            Home
-                        </a>
-                        <a href="/services" className="text-gray-700 hover:text-brand-orange transition-colors">
-                            Services
-                        </a>
+                    <Link to="/" className="text-gray-700 hover:text-brand-orange transition-colors">Home</Link>
+                    <Link to="/services" className="text-gray-700 hover:text-brand-orange transition-colors">Services</Link>
                         <a href="#whyus" className="text-gray-700 hover:text-brand-orange transition-colors">
                             Why Us
                         </a>

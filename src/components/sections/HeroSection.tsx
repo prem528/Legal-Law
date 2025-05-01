@@ -12,16 +12,46 @@ interface Slide {
 }
 
 const HeroSection: React.FC = () => {
-  const [slides, setSlides] = useState<Slide[]>([]);
+
+  const fallbackSlide: Slide = {
+    id: 0,
+    title: "Empowering Your Legal Rights",
+    description: "Get trusted legal consultation from certified experts across India.",
+    background_url: "/law11.png", // Place a fallback image in your public folder
+    button_text: "Start Consultation"
+  };
+
+  const [slides, setSlides] = useState<Slide[]>([fallbackSlide]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(1);
 
+
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/api/hero-slides')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data && data.length > 0) {
+  //         setSlides(data);
+  //       }
+  //     })
+  //     .catch((err) => console.error("Failed to fetch hero slides:", err))
+  // }, []);
+
   useEffect(() => {
-    fetch('http://localhost:5000/api/hero-slides')
-      .then((res) => res.json())
-      .then((data) => setSlides(data))
-      .catch((err) => console.error("Failed to fetch hero slides:", err));
-  }, []);
+    const fetchSlides = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/hero-slides')
+        const data = await response.json();
+
+        if (data && data.length > 0) {
+          setSlides(data);
+        }
+      } catch (error) {
+        console.log("Failed to Fetch Slides Data", error);
+      }
+  }
+  fetchSlides();
+  }, [])
 
   useEffect(() => {
     if (slides.length === 0) return;
@@ -52,7 +82,7 @@ const HeroSection: React.FC = () => {
     }),
   };
 
-  if (slides.length === 0) return null;
+  // if (slides.length === 0) return null;
 
   return (
     <section className="relative text-white min-h-screen flex items-center justify-center overflow-hidden">
@@ -119,9 +149,8 @@ const HeroSection: React.FC = () => {
                     setDirection(index > currentSlide ? 1 : -1);
                     setCurrentSlide(index);
                   }}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide ? 'bg-orange-500 scale-125' : 'bg-white/40'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-orange-500 scale-125' : 'bg-white/40'
+                    }`}
                 />
               ))}
             </div>
