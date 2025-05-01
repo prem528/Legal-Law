@@ -18,10 +18,10 @@ const Navbar: React.FC = () => {
                     </div>
 
                     <nav className="hidden md:flex space-x-8">
-                        <a href="#" className="text-gray-700 hover:text-brand-orange transition-colors">
+                        <a href="/" className="text-gray-700 hover:text-brand-orange transition-colors">
                             Home
                         </a>
-                        <a href="#services" className="text-gray-700 hover:text-brand-orange transition-colors">
+                        <a href="/services" className="text-gray-700 hover:text-brand-orange transition-colors">
                             Services
                         </a>
                         <a href="#whyus" className="text-gray-700 hover:text-brand-orange transition-colors">

@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           <div>
             
             <p className="mt-4 text-gray-400">
-              Providing affordable legal services for all societal segments since 2010.
+              Providing affordable legal services for all societal segments since 2020.
             </p>
             <div className="mt-6 flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">

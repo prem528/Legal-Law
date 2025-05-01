@@ -1,40 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react'; // optional: you can use icons for better arrows
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const slides = [
-  {
-    image: "/law.svg",
-    title: "Empowering Justice with Affordable Legal Support",
-    description: "Get expert legal advice from seasoned attorneys. We make justice affordable and accessible for all.",
-    button: "Schedule Consultation"
-  },
-  {
-    image: "/law1.svg",
-    title: "Your Rights, Our Mission",
-    description: "Dedicated to protecting your legal rights with transparency, integrity, and expertise.",
-    button: "Know Your Rights"
-  },
-  {
-    image: "/law11.png",
-    title: "Trusted Legal Solutions for Every Need",
-    description: "Partner with top attorneys for business, family, and criminal legal consultations.",
-    button: "Get Started"
-  }
-];
+interface Slide {
+  id: number;
+  title: string;
+  description: string;
+  background_url: string;
+  button_text: string;
+}
 
 const HeroSection: React.FC = () => {
+  const [slides, setSlides] = useState<Slide[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Auto-slide logic
+  // Fetch slides from backend
   useEffect(() => {
+    fetch('http://localhost:5000/api/hero-slides')
+      .then((res) => res.json())
+      .then((data) => setSlides(data))
+      .catch((err) => console.error("Failed to fetch hero slides:", err));
+  }, []);
+
+  // Auto-slide
+  useEffect(() => {
+    if (slides.length === 0) return;
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [slides]);
+
+  if (slides.length === 0) return null; // Or return a loader/spinner
 
   const goToPrevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -49,16 +49,15 @@ const HeroSection: React.FC = () => {
       {/* Background image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.img
-          key={currentSlide} // Important to re-trigger animation
+          key={currentSlide}
           initial={{ x: 200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }} 
+          animate={{ x: 0, opacity: 1 }}
           exit={{ x: -200, opacity: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          src={slides[currentSlide].image}
+          src={slides[currentSlide].background_url}
           alt="Legal background"
           className="w-full h-full object-cover scale-105 opacity-90"
         />
-
         <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/40 to-transparent"></div>
       </div>
 
@@ -90,7 +89,7 @@ const HeroSection: React.FC = () => {
 
         <div className="flex flex-wrap justify-center gap-4 mt-8">
           <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white shadow-md px-6">
-            {slides[currentSlide].button}
+            {slides[currentSlide].button_text}
           </Button>
           <Button
             size="lg"
@@ -107,8 +106,9 @@ const HeroSection: React.FC = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full ${index === currentSlide ? 'bg-orange-500' : 'bg-white/50'
-                }`}
+              className={`w-3 h-3 rounded-full ${
+                index === currentSlide ? 'bg-orange-500' : 'bg-white/50'
+              }`}
             />
           ))}
         </div>
