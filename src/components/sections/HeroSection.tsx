@@ -26,17 +26,6 @@ const HeroSection: React.FC = () => {
   const [direction, setDirection] = useState(1);
 
 
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/api/hero-slides')
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data && data.length > 0) {
-  //         setSlides(data);
-  //       }
-  //     })
-  //     .catch((err) => console.error("Failed to fetch hero slides:", err))
-  // }, []);
-
   useEffect(() => {
     const fetchSlides = async () => {
       try {
@@ -82,7 +71,6 @@ const HeroSection: React.FC = () => {
     }),
   };
 
-  // if (slides.length === 0) return null;
 
   return (
     <section className="relative text-white min-h-screen flex items-center justify-center overflow-hidden">

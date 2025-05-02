@@ -1,38 +1,26 @@
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+
+interface Service {
+  icon_url: string;
+  title: string;
+  description: string;
+}
 
 const Services = () => {
-  const services = [
-    {
-      icon:  "https://png.pngtree.com/png-vector/20240314/ourmid/pngtree-litigation-support-vector-concept-illustration-png-image_11949755.png",
-      title: "Litigation Services",
-      description: "Expert representation for civil, criminal, and corporate legal matters in courts across India."
-    },
-    {
-      icon: "https://img.freepik.com/premium-vector/conceptual-illustration-document-management-organization_1263357-34825.jpg?semt=ais_hybrid&w=740",
-      title: "Document Drafting & Review",
-      description: "Professional drafting, reviewing, and verification of contracts, agreements, wills, and legal documents."
-    },
-    {
-      icon:  "https://karnatakajudiciary.kar.nic.in/newwebsite/assets/images/legalservices.png",
-      title: "Legal Consultation",
-      description: "Get expert advice on a wide range of issues including property disputes, family matters, and corporate law."
-    },
-    {
-      icon: "https://icon2.cleanpng.com/20180218/qpw/avhb7etli.webp",
-      title: "Dispute Resolution",
-      description: "Mediation and arbitration services to resolve disputes quickly without lengthy litigation."
-    },
-    {
-      icon:  "https://www.vanillalaw.law/wp-content/uploads/2023/11/231127-VL-Corporate-Law-Essentials2.png",
-      title: "Corporate Legal Services",
-      description: "Advisory and compliance services for startups, SMEs, and large enterprises to ensure smooth operations."
-    },
-    {
-      icon: "https://cdni.iconscout.com/illustration/premium/thumb/child-custody-or-alimony-illustration-download-in-svg-png-gif-file-formats--family-law-couple-divorce-book-and-children-2-pack-people-illustrations-3697000.png" ,
-      title: "Family Law Assistance",
-      description: "Support in divorce cases, child custody, alimony, and succession planning with confidentiality and care."
+  const [services, setServices] = useState<Service[]>([])
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/services")
+        const data = await response.json();
+        setServices(data);
+      } catch(error) {
+        console.log("Failed to load services data", error);
+      }
     }
-  ];
+    loadData();
+  }, [])
 
   return (
     <section className="py-10 px-4 max-w-7xl mx-auto">
@@ -48,7 +36,7 @@ const Services = () => {
           >
             {/* Left 1/3 - Icon */}
             <div className="w-1/3 bg-indigo-50 flex items-center justify-center p-6">
-              <img src={service.icon} alt={service.title} className="w-full h-auto object-contain" />
+              <img src={service.icon_url} alt={service.title} className="w-full h-auto object-contain" />
             </div>
 
             {/* Right 2/3 - Text */}
