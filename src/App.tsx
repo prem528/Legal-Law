@@ -19,6 +19,8 @@ import ContactForm from './components/forms/ContactForm';
 import CityLocations from './components/sections/CityLocations';
  
 import ServicesPage from './components/services/ServicesPage';
+import BlogPost from './components/blogs/BlogPost';
+import Blogs from './components/blogs/Blogs';
 
 function HomePage() {
   return (
@@ -49,7 +51,8 @@ function App() {
         {/* Main Route Logic */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/services" element={<ServicesPage />} />
           {/* You can add more routes like /about, /contact, etc. */}
         </Routes>
