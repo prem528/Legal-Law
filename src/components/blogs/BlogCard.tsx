@@ -25,7 +25,7 @@ export const BlogCard = React.memo(({
   imageUrl = "https://i0.wp.com/www.managementnote.com/wp-content/uploads/2023/05/law.jpg?fit=1280%2C853&ssl=1"
 }: BlogCardProps) => {
   return (
-    <Card className="overflow-hidden hover:shadow-md transition-shadow duration-300 will-change-transform">
+    <Card className="overflow-hidden hover:shadow-md transition-shadow duration-300 will-change-transform pb-4">
       <div className="overflow-hidden">
         <AspectRatio ratio={16 / 9}>
           <img

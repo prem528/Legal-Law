@@ -1,4 +1,4 @@
-import { BookOpen, Search } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -71,23 +71,13 @@ const Blogs = () => {
             <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-24 will-change-transform">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                        <h1 className="text-4xl md:text-5xl font-semibold mb-6">
                             Legal Insights & Updates
                         </h1>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-">
                             Stay informed with the latest legal news, insights, and expert advice
                             on business law, compliance, and regulatory updates.
                         </p>
-                        <div className="max-w-lg mx-auto flex items-center gap-2">
-                            <Input
-                                placeholder="Search articles..."
-                                className="bg-white shadow-sm"
-                            />
-                            <Button className="bg-green-500 hover:bg-green-600">
-                                <Search className="h-4 w-4 mr-2" />
-                                Search
-                            </Button>
-                        </div>
                     </div>
                 </div>
             </section>
